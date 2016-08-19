@@ -3,11 +3,11 @@
   <div class="return"><a [routerLink]="['/']">f0ck.me</a></div>
   <item-display [item]="item"></item-display>
   <div class="nav">
-    <a *ngIf="item.first && item.id !== item.first" [routerLink]="['/', item.first]">&lt;&lt;-</a>
-    <a *ngIf="item.prev" [routerLink]="['/', item.prev]">&lt;-</a>
+    <a *ngIf="item.last && item.id !== item.last" [routerLink]="['/', item.last]">&lt;&lt;-</a>
+    <a *ngIf="item.next" [routerLink]="['/', item.next]">&lt;-</a>
     <a [routerLink]="['/', 'random']">Random</a>
-    <a *ngIf="item.next" [routerLink]="['/', item.next]">-&gt;</a>
-    <a *ngIf="item.last && item.id !== item.last" [routerLink]="['/', item.last]">-&gt;&gt;</a>
+    <a *ngIf="item.prev" [routerLink]="['/', item.prev]">-&gt;</a>
+    <a *ngIf="item.first && item.id !== item.first" [routerLink]="['/', item.first]">-&gt;&gt;</a>
   </div>
   <div class="info">
     src: <a href="{{item.src}}" target="_blank">{{item.src}}</a><br>

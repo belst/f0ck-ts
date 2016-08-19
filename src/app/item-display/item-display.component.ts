@@ -8,18 +8,17 @@ import { Item } from '../item';
 })
 export class ItemDisplayComponent implements OnInit {
 
-  @Input() item: Item;
-  type: string = '';
+  _item: Item;
+  _type: string = '';
 
   constructor() { }
 
+  @Input() set item(item: Item) {
+    this._item = item;
+    this._type = item.mime.split('/')[0];
+  }
+
   ngOnInit() {
-    if(this.item.dest.search(/^.*\.(:?png|gif|bmp|jpg|jpeg|webp)$/im) >= 0)
-      this.type = 'img';
-    if(this.item.dest.search(/^.*\.(:?mp3|wav|ogg)$/im) >= 0)
-      this.type = 'audio';
-    if(this.item.dest.search(/^.*\.(:?webm|mp4)$/im) >= 0)
-      this.type = 'video';
   }
 
 }
