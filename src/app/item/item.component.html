@@ -1,0 +1,18 @@
+<div *ngIf="item" class="container">
+  <div class="id">[ID: {{item.id}} | by: {{item.username}}]</div>
+  <div class="return"><a [routerLink]="['/']">f0ck.me</a></div>
+  <item-display [item]="item"></item-display>
+  <div class="nav">
+    <a *ngIf="item.first && item.id !== item.first" [routerLink]="['/', item.first]">&lt;&lt;-</a>
+    <a *ngIf="item.prev" [routerLink]="['/', item.prev]">&lt;-</a>
+    <a [routerLink]="['/', 'random']">Random</a>
+    <a *ngIf="item.next" [routerLink]="['/', item.next]">-&gt;</a>
+    <a *ngIf="item.last && item.id !== item.last" [routerLink]="['/', item.last]">-&gt;&gt;</a>
+  </div>
+  <div class="info">
+    src: <a href="{{item.src}}" target="_blank">{{item.src}}</a><br>
+    dest: {{item.dest}}<br>
+    mime: {{item.mime}} size: {{item.size | bytes}}<br>
+    channel: {{item.userchannel}} network: {{item.usernetwork}}
+  </div>
+</div>
