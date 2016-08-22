@@ -1,3 +1,8 @@
-<div class="item-thumb" *ngFor="let item of items">
-  <a [routerLink]="['/', item.id]"><img src="/t/{{item.id}}.png"></a>
+<div class="list"
+     infinite-scroll
+     [infiniteScrollDistance]="2"
+     (scrolled)="onScrollDown()">
+  <div class="item-thumb" *ngFor="let item of items">
+    <a [routerLink]="['/', item.id]"><img src="https://f0ck.me/t/{{item.id}}.png"></a>
+  </div>
 </div>

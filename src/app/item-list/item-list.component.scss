@@ -10,3 +10,14 @@
     opacity: 0.76;
   }
 }
+
+.list {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  &:after {
+    content: "";
+    flex: auto;
+  }
+}
