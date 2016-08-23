@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { F0ckService } from '../f0ck.service';
@@ -24,6 +24,25 @@ export class ItemComponent implements OnInit {
     private f0ck: F0ckService
     ) { }
 
+  @HostListener('window:keydown', ['$event'])
+  handleKeyPress($event) {
+    switch($event.key) {
+      case 'ArrowLeft':
+      case 'a':
+        if(this.item.next)
+          this.router.navigate(['/', this.item.next]);
+        break;
+      case 'r':
+        this.router.navigate(['/', 'random']);
+        break;
+      case 'ArrowRight':
+      case 'd':
+        if(this.item.prev)
+          this.router.navigate(['/', this.item.prev]);
+        break;
+    }
+  }
+  
   ngOnInit() {
     if(this.item) return;
 
